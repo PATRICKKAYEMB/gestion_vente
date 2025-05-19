@@ -1,21 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect } from "react";
+import AppNav from "./src/Navigation/AppNav";
+
+import * as splashScreen  from "expo-splash-screen"
+
+
+splashScreen.preventAutoHideAsync()
+
+
 
 export default function App() {
+
+  useEffect(()=>{
+    const prepare = async()=>{
+      await new Promise (resolve => setTimeout(resolve,2000))
+      await  splashScreen.hideAsync()
+      
+    }
+    prepare()
+
+  },[])
+
   return (
-    <View style={styles.container}>
-      <Text>best </Text>
-      <StatusBar style="auto" />
-    </View>
+   
+  <AppNav/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
 
